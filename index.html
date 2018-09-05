@@ -1,0 +1,1580 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>RPC Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;go&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="go">go</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#configuration" class="toc-h2 toc-link" data-title="Configuration">Configuration</a>
+                  </li>
+                  <li>
+                    <a href="#arguments" class="toc-h2 toc-link" data-title="Arguments">Arguments</a>
+                  </li>
+                  <li>
+                    <a href="#uri-http" class="toc-h2 toc-link" data-title="URI/HTTP">URI/HTTP</a>
+                  </li>
+                  <li>
+                    <a href="#jsonrpc-http" class="toc-h2 toc-link" data-title="JSONRPC/HTTP">JSONRPC/HTTP</a>
+                  </li>
+                  <li>
+                    <a href="#jsonrpc-websockets" class="toc-h2 toc-link" data-title="JSONRPC/websockets">JSONRPC/websockets</a>
+                  </li>
+                  <li>
+                    <a href="#more-examples" class="toc-h2 toc-link" data-title="More Examples">More Examples</a>
+                  </li>
+                  <li>
+                    <a href="#get-the-list" class="toc-h2 toc-link" data-title="Get the list">Get the list</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#endpoints" class="toc-h1 toc-link" data-title="Endpoints">Endpoints</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#abciinfo" class="toc-h2 toc-link" data-title="ABCIInfo"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/abci.go?s=2532:2579#L95">ABCIInfo</a></a>
+                  </li>
+                  <li>
+                    <a href="#abciquery" class="toc-h2 toc-link" data-title="ABCIQuery"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/abci.go?s=1609:1716#L52">ABCIQuery</a></a>
+                  </li>
+                  <li>
+                    <a href="#block" class="toc-h2 toc-link" data-title="Block"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/blocks.go?s=6095:6152#L217">Block</a></a>
+                  </li>
+                  <li>
+                    <a href="#blockresults" class="toc-h2 toc-link" data-title="BlockResults"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/blocks.go?s=9822:9893#L353">BlockResults</a></a>
+                  </li>
+                  <li>
+                    <a href="#blockchaininfo" class="toc-h2 toc-link" data-title="BlockchainInfo"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/blocks.go?s=1634:1719#L66">BlockchainInfo</a></a>
+                  </li>
+                  <li>
+                    <a href="#broadcasttxasync" class="toc-h2 toc-link" data-title="BroadcastTxAsync"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/mempool.go?s=1197:1266#L51">BroadcastTxAsync</a></a>
+                  </li>
+                  <li>
+                    <a href="#broadcasttxcommit" class="toc-h2 toc-link" data-title="BroadcastTxCommit"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/mempool.go?s=3699:3775#L152">BroadcastTxCommit</a></a>
+                  </li>
+                  <li>
+                    <a href="#broadcasttxsync" class="toc-h2 toc-link" data-title="BroadcastTxSync"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/mempool.go?s=2190:2258#L91">BroadcastTxSync</a></a>
+                  </li>
+                  <li>
+                    <a href="#commit" class="toc-h2 toc-link" data-title="Commit"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/blocks.go?s=8481:8540#L299">Commit</a></a>
+                  </li>
+                  <li>
+                    <a href="#consensusstate" class="toc-h2 toc-link" data-title="ConsensusState"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/consensus.go?s=7042:7101#L257">ConsensusState</a></a>
+                  </li>
+                  <li>
+                    <a href="#dumpconsensusstate" class="toc-h2 toc-link" data-title="DumpConsensusState"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/consensus.go?s=5299:5366#L190">DumpConsensusState</a></a>
+                  </li>
+                  <li>
+                    <a href="#genesis" class="toc-h2 toc-link" data-title="Genesis"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/net.go?s=3065:3110#L125">Genesis</a></a>
+                  </li>
+                  <li>
+                    <a href="#health" class="toc-h2 toc-link" data-title="Health"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/health.go?s=519:562#L29">Health</a></a>
+                  </li>
+                  <li>
+                    <a href="#netinfo" class="toc-h2 toc-link" data-title="NetInfo"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/net.go?s=594:639#L37">NetInfo</a></a>
+                  </li>
+                  <li>
+                    <a href="#numunconfirmedtxs" class="toc-h2 toc-link" data-title="NumUnconfirmedTxs"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/mempool.go?s=7185:7247#L274">NumUnconfirmedTxs</a></a>
+                  </li>
+                  <li>
+                    <a href="#status" class="toc-h2 toc-link" data-title="Status"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/status.go?s=1742:1785#L66">Status</a></a>
+                  </li>
+                  <li>
+                    <a href="#subscribe" class="toc-h2 toc-link" data-title="Subscribe"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/events.go?s=2799:2889#L87">Subscribe</a></a>
+                  </li>
+                  <li>
+                    <a href="#tx" class="toc-h2 toc-link" data-title="Tx"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/tx.go?s=2113:2171#L74">Tx</a></a>
+                  </li>
+                  <li>
+                    <a href="#txsearch" class="toc-h2 toc-link" data-title="TxSearch"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/tx.go?s=5167:5257#L175">TxSearch</a></a>
+                  </li>
+                  <li>
+                    <a href="#unconfirmedtxs" class="toc-h2 toc-link" data-title="UnconfirmedTxs"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/mempool.go?s=6517:6585#L242">UnconfirmedTxs</a></a>
+                  </li>
+                  <li>
+                    <a href="#unsafedialpeers" class="toc-h2 toc-link" data-title="UnsafeDialPeers"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/net.go?s=1782:1868#L75">UnsafeDialPeers</a></a>
+                  </li>
+                  <li>
+                    <a href="#unsafedialseeds" class="toc-h2 toc-link" data-title="UnsafeDialSeeds"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/net.go?s=1279:1348#L62">UnsafeDialSeeds</a></a>
+                  </li>
+                  <li>
+                    <a href="#unsubscribe" class="toc-h2 toc-link" data-title="Unsubscribe"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/events.go?s=4191:4285#L139">Unsubscribe</a></a>
+                  </li>
+                  <li>
+                    <a href="#unsubscribeall" class="toc-h2 toc-link" data-title="UnsubscribeAll"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/events.go?s=5037:5120#L172">UnsubscribeAll</a></a>
+                  </li>
+                  <li>
+                    <a href="#validators" class="toc-h2 toc-link" data-title="Validators"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/consensus.go?s=1045:1112#L46">Validators</a></a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://tendermint.com/'>Tendermint</a></li>
+            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Tendermint supports the following RPC protocols:</p>
+
+<ul>
+<li>URI over HTTP</li>
+<li>JSONRPC over HTTP</li>
+<li>JSONRPC over websockets</li>
+</ul>
+
+<p>Tendermint RPC is built using <a href="a%20href=&quot;https://github.com/tendermint/tendermint/tree/master/rpc/lib&quot;&gt;https://github.com/tendermint/tendermint/tree/master/rpc/lib&lt;/a">our own RPC library</a> which contains its own set of documentation and tests.</p>
+<h2 id='configuration'>Configuration</h2>
+<p>Set the <code>laddr</code> config parameter under <code>[rpc]</code> table in the <code>$TMHOME/config/config.toml</code> file or the <code>--rpc.laddr</code> command-line flag to the desired protocol://host:port setting.  Default: <code>tcp://0.0.0.0:26657</code>.</p>
+<h2 id='arguments'>Arguments</h2>
+<p>Arguments which expect strings or byte arrays may be passed as quoted strings, like <code>&quot;abc&quot;</code> or as <code>0x</code>-prefixed strings, like <code>0x616263</code>.</p>
+<h2 id='uri-http'>URI/HTTP</h2><pre class="highlight shell"><code>curl <span class="s1">'localhost:26657/broadcast_tx_sync?tx="abc"'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2B8EC32BA2579B3B8606E42C06DE2F7AFA2556EF"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"log"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='jsonrpc-http'>JSONRPC/HTTP</h2>
+<p>JSONRPC requests can be POST&#39;d to the root RPC endpoint via HTTP (e.g. <code>&lt;a href=&quot;http://localhost:26657/&quot;&gt;http://localhost:26657/&lt;/a&gt;</code>).</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"broadcast_tx_sync"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"abc"</span><span class="w"> </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dontcare"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='jsonrpc-websockets'>JSONRPC/websockets</h2>
+<p>JSONRPC requests can be made via websocket. The websocket endpoint is at <code>/websocket</code>, e.g. <code>localhost:26657/websocket</code>.  Asynchronous RPC functions like event <code>subscribe</code> and <code>unsubscribe</code> are only available via websockets.</p>
+<h2 id='more-examples'>More Examples</h2>
+<p>See the various bash tests using curl in <code>test/</code>, and examples using the <code>Go</code> API in <code>rpc/client/</code>.</p>
+<h2 id='get-the-list'>Get the list</h2>
+<p>An HTTP Get request to the root RPC endpoint shows a list of available endpoints.</p>
+<pre class="highlight shell"><code>curl <span class="s1">'localhost:26657'</span>
+</code></pre>
+<blockquote>
+<p>Response:</p>
+</blockquote>
+<pre class="highlight plain tab-plaintext"><code>Available endpoints:
+/abci_info
+/dump_consensus_state
+/genesis
+/net_info
+/num_unconfirmed_txs
+/status
+/health
+/unconfirmed_txs
+/unsafe_flush_mempool
+/unsafe_stop_cpu_profiler
+/validators
+
+Endpoints that require arguments:
+/abci_query?path=_&amp;data=_&amp;prove=_
+/block?height=_
+/blockchain?minHeight=_&amp;maxHeight=_
+/broadcast_tx_async?tx=_
+/broadcast_tx_commit?tx=_
+/broadcast_tx_sync?tx=_
+/commit?height=_
+/dial_seeds?seeds=_
+/dial_persistent_peers?persistent_peers=_
+/subscribe?event=_
+/tx?hash=_&amp;prove=_
+/unsafe_start_cpu_profiler?filename=_
+/unsafe_write_heap_profile?filename=_
+/unsubscribe?event=_
+</code></pre><h1 id='endpoints'>Endpoints</h1><h2 id='abciinfo'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/abci.go?s=2532:2579#L95">ABCIInfo</a></h2>
+<p>Get some info about the application.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/abci_info'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">info</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">ABCIInfo</span><span class="p">()</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">size</span><span class="se">\"</span><span class="s2">:3}"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='abciquery'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/abci.go?s=1609:1716#L52">ABCIQuery</a></h2>
+<p>Query the application for some information.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/abci_query?path=""&amp;data="abcd"&amp;trusted=false'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">result</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">ABCIQuery</span><span class="p">(</span><span class="s">""</span><span class="p">,</span><span class="x"> </span><span class="s">"abcd"</span><span class="p">,</span><span class="x"> </span><span class="no">true</span><span class="p">)</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"log"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exists"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"proof"</span><span class="p">:</span><span class="w"> </span><span class="s2">"010114FED0DAD959F36091AD761C922ABA3CBF1D8349990101020103011406AA2262E2F448242DF2C2607C3CDC705313EE3B0001149D16177BC71E445476174622EA559715C293740C"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61626364"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61626364"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>path</td>
+<td>string</td>
+<td>false</td>
+<td>false</td>
+<td>Path to the data (&quot;/a/b/c&quot;)</td>
+</tr>
+<tr>
+<td>data</td>
+<td>[]byte</td>
+<td>false</td>
+<td>true</td>
+<td>Data</td>
+</tr>
+<tr>
+<td>height</td>
+<td>int64</td>
+<td>0</td>
+<td>false</td>
+<td>Height (0 means latest)</td>
+</tr>
+<tr>
+<td>trusted</td>
+<td>bool</td>
+<td>false</td>
+<td>false</td>
+<td>Does not include a proof of the data inclusion</td>
+</tr>
+</tbody></table>
+<h2 id='block'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/blocks.go?s=6095:6152#L217">Block</a></h2>
+<p>Get block at a given height.
+If no height is provided, it will fetch the latest block.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/block?height=10'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">info</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">Block</span><span class="p">(</span><span class="m">10</span><span class="p">)</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"block"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"last_commit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"precommits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12C0D8893B8A38224488DC1DE6270DF76BB1A5E9DB1C68577706A6A97C6EC34FFD12339183D5CA8BC2F46148773823DE905B7F6F5862FD564038BB7AE03BF50D"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed25519"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"block_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"parts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3C78F00658E06744A88F24FF97A0A5011139F34A"</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F70588DAB36BDA5A953D548A16F7D48C6C2DFD78"</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"round"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"validator_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"validator_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E89A51D60F68385E09E716D353373B11F8FACD62"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"blockID"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"parts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3C78F00658E06744A88F24FF97A0A5011139F34A"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F70588DAB36BDA5A953D548A16F7D48C6C2DFD78"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"txs"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"app_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"chain_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-chain-6UTNIN"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-29T15:05:53.877Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"num_txs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"last_block_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"parts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3C78F00658E06744A88F24FF97A0A5011139F34A"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F70588DAB36BDA5A953D548A16F7D48C6C2DFD78"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"last_commit_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F31CC4282E50B3F2A58D763D233D76F26D26CABE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"data_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"validators_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9365FC80F234C967BD233F5A3E2AB2F1E4B0E5AA"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"block_meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"app_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"chain_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-chain-6UTNIN"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-29T15:05:53.877Z"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"num_txs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"last_block_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"parts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3C78F00658E06744A88F24FF97A0A5011139F34A"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F70588DAB36BDA5A953D548A16F7D48C6C2DFD78"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"last_commit_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F31CC4282E50B3F2A58D763D233D76F26D26CABE"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"data_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"validators_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9365FC80F234C967BD233F5A3E2AB2F1E4B0E5AA"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"block_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"parts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"277A4DBEF91483A18B85F2F5677ABF9694DFA40F"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96B1D2F2D201BA4BC383EB8224139DB1294944E5"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='blockresults'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/blocks.go?s=9822:9893#L353">BlockResults</a></h2>
+<p>BlockResults gets ABCIResults at a given height.
+If no height is provided, it will fetch results for the latest block.</p>
+
+<p>Results are for the height of the block containing the txs.
+Thus response.results[5] is the results of executing getBlock(h).Txs[5]</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/block_results?height=10'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">info</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">BlockResults</span><span class="p">(</span><span class="m">10</span><span class="p">)</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"results"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CAFE00F00D"</span><span class="w">
+     </span><span class="p">},</span><span class="w">
+     </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+     </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='blockchaininfo'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/blocks.go?s=1634:1719#L66">BlockchainInfo</a></h2>
+<p>Get block headers for minHeight &lt;= height &lt;= maxHeight.
+Block headers are returned in descending order (highest first).</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/blockchain?minHeight=10&amp;maxHeight=10'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">info</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">BlockchainInfo</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="x"> </span><span class="m">10</span><span class="p">)</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"block_metas"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"app_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"chain_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-chain-6UTNIN"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-29T15:05:53.877Z"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"num_txs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"last_block_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"parts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                            </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3C78F00658E06744A88F24FF97A0A5011139F34A"</span><span class="p">,</span><span class="w">
+                            </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F70588DAB36BDA5A953D548A16F7D48C6C2DFD78"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"last_commit_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F31CC4282E50B3F2A58D763D233D76F26D26CABE"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"data_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"validators_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9365FC80F234C967BD233F5A3E2AB2F1E4B0E5AA"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"block_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"parts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"277A4DBEF91483A18B85F2F5677ABF9694DFA40F"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96B1D2F2D201BA4BC383EB8224139DB1294944E5"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"last_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">5493</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<aside class="notice">Returns at most 20 items.</aside>
+<h2 id='broadcasttxasync'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/mempool.go?s=1197:1266#L51">BroadcastTxAsync</a></h2>
+<p>Returns right away, with no response</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/broadcast_tx_async?tx="123"'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">result</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">BroadcastTxAsync</span><span class="p">(</span><span class="s">"123"</span><span class="p">)</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E39AAB7A537ABAA237831742DCE1117F187C3C52"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"log"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tx</td>
+<td>Tx</td>
+<td>nil</td>
+<td>true</td>
+<td>The transaction</td>
+</tr>
+</tbody></table>
+<h2 id='broadcasttxcommit'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/mempool.go?s=3699:3775#L152">BroadcastTxCommit</a></h2>
+<p>CONTRACT: only returns error if mempool.BroadcastTx errs (ie. problem with the app)
+or if we timeout waiting for tx to commit.
+If CheckTx or DeliverTx fail, no error will be returned, but the returned result
+will contain a non-OK ABCI code.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/broadcast_tx_commit?tx="789"'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">result</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">BroadcastTxCommit</span><span class="p">(</span><span class="s">"789"</span><span class="p">)</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">26682</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"75CA0F856A4DA078FC4911580360E70CEFB2EBEE"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"deliver_tx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"log"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"check_tx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"log"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tx</td>
+<td>Tx</td>
+<td>nil</td>
+<td>true</td>
+<td>The transaction</td>
+</tr>
+</tbody></table>
+<h2 id='broadcasttxsync'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/mempool.go?s=2190:2258#L91">BroadcastTxSync</a></h2>
+<p>Returns with the response from CheckTx.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/broadcast_tx_sync?tx="456"'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">result</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">BroadcastTxSync</span><span class="p">(</span><span class="s">"456"</span><span class="p">)</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"log"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0D33F2F03A5234F38706E43004489E061AC40A2E"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tx</td>
+<td>Tx</td>
+<td>nil</td>
+<td>true</td>
+<td>The transaction</td>
+</tr>
+</tbody></table>
+<h2 id='commit'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/blocks.go?s=8481:8540#L299">Commit</a></h2>
+<p>Get block commit at a given height.
+If no height is provided, it will fetch the commit for the latest block.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/commit?height=11'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">info</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">Commit</span><span class="p">(</span><span class="m">11</span><span class="p">)</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"canonical"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"commit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"precommits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"signature"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00970429FEC652E9E21D106A90AE8C5413759A7488775CEF4A3F44DC46C7F9D941070E4FBE9ED54DF247FA3983359A0C3A238D61DE55C75C9116D72ABC9CF50F"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed25519"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"block_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"parts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9E37CBF266BC044A779E09D81C456E653B89E006"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CC6E861E31CA4334E9888381B4A9137D1458AB6A"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"round"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"validator_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"validator_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E89A51D60F68385E09E716D353373B11F8FACD62"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"blockID"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"parts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9E37CBF266BC044A779E09D81C456E653B89E006"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CC6E861E31CA4334E9888381B4A9137D1458AB6A"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"app_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"chain_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-chain-6UTNIN"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-29T15:05:54.893Z"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"num_txs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_block_id"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"parts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"277A4DBEF91483A18B85F2F5677ABF9694DFA40F"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96B1D2F2D201BA4BC383EB8224139DB1294944E5"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"last_commit_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3CE0C9727CE524BA9CB7C91E28F08E2B94001087"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"data_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"validators_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9365FC80F234C967BD233F5A3E2AB2F1E4B0E5AA"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='consensusstate'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/consensus.go?s=7042:7101#L257">ConsensusState</a></h2>
+<p>ConsensusState returns a concise summary of the consensus state.
+UNSTABLE</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/consensus_state'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">state</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">ConsensusState</span><span class="p">()</span><span class="x">
+</span></code></pre>
+<p>The above command returns JSON structured like this:</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"round_state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"height/round/step"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9336/0/1"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-14T10:25:45.72595357-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"proposal_block_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"locked_block_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"valid_block_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"height_vote_set"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"round"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"prevotes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"nil-Vote"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"prevotes_bit_array"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BA{1:_} 0/10 = 0.00"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"precommits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+              </span><span class="s2">"nil-Vote"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"precommits_bit_array"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BA{1:_} 0/10 = 0.00"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='dumpconsensusstate'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/consensus.go?s=5299:5366#L190">DumpConsensusState</a></h2>
+<p>DumpConsensusState dumps consensus state.
+UNSTABLE</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/dump_consensus_state'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">state</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">DumpConsensusState</span><span class="p">()</span><span class="x">
+</span></code></pre>
+<p>The above command returns JSON structured like this:</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"round_state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">7185</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"round"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"step"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-12T13:57:28.440293621-07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"commit_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-12T13:57:27.440293621-07:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"validators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"validators"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B5B3D40BE53982AD294EF99FF5A34C0C3E5A3244"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"pub_key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tendermint/PubKeyEd25519"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SBctdhRBcXtBgdI/8a/alTsUhGXqGs9k5ylV1u5iKHg="</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"voting_power"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"accum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"proposer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B5B3D40BE53982AD294EF99FF5A34C0C3E5A3244"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pub_key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tendermint/PubKeyEd25519"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SBctdhRBcXtBgdI/8a/alTsUhGXqGs9k5ylV1u5iKHg="</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"voting_power"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"accum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"proposal"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"proposal_block"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"proposal_block_parts"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"locked_round"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"locked_block"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"locked_block_parts"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"valid_round"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"valid_block"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"valid_block_parts"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"round"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"prevotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"precommits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"commit_round"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"last_commit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"votes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"Vote{0:B5B3D40BE539 7184/00/2(Precommit) 14F946FA7EF0 /702B1B1A602A.../ @ 2018-05-12T20:57:27.342Z}"</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"votes_bit_array"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"peer_maj_23s"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"last_validators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"validators"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B5B3D40BE53982AD294EF99FF5A34C0C3E5A3244"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"pub_key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tendermint/PubKeyEd25519"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SBctdhRBcXtBgdI/8a/alTsUhGXqGs9k5ylV1u5iKHg="</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"voting_power"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"accum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">],</span><span class="w">
+          </span><span class="s2">"proposer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B5B3D40BE53982AD294EF99FF5A34C0C3E5A3244"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"pub_key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tendermint/PubKeyEd25519"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SBctdhRBcXtBgdI/8a/alTsUhGXqGs9k5ylV1u5iKHg="</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"voting_power"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"accum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"peers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"node_address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30ad1854af22506383c3f0e57fb3c7f90984c5e8@172.16.63.221:26656"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"peer_state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"round_state"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">7185</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"round"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"step"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-12T13:57:27.438039872-07:00"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"proposal"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"proposal_block_parts_header"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"proposal_block_parts"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"proposal_pol_round"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"proposal_pol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"prevotes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"precommits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"last_commit_round"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"last_commit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"x"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"catchup_commit_round"</span><span class="p">:</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"catchup_commit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"_"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"last_vote_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">7184</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"votes"</span><span class="p">:</span><span class="w"> </span><span class="mi">255</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"last_block_part_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">7184</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"block_parts"</span><span class="p">:</span><span class="w"> </span><span class="mi">255</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='genesis'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/net.go?s=3065:3110#L125">Genesis</a></h2>
+<p>Get genesis file.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/genesis'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">genesis</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">Genesis</span><span class="p">()</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"genesis"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"app_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"validators"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"power"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"pub_key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68DFDA7E50F82946E7E8546BED37944A422CD1B831E70DF66BA3B8430593944D"</span><span class="p">,</span><span class="w">
+                        </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed25519"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"chain_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-chain-6UTNIN"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"genesis_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-05-29T15:05:41.671Z"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='health'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/health.go?s=519:562#L29">Health</a></h2>
+<p>Get node health. Returns empty result (200 OK) on success, no response - in
+case of an error.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/health'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">result</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">Health</span><span class="p">()</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='netinfo'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/net.go?s=594:639#L37">NetInfo</a></h2>
+<p>Get network info.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/net_info'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">info</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NetInfo</span><span class="p">()</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"n_peers"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"peers"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"listeners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="s2">"Listener(@10.0.2.15:26656)"</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"listening"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='numunconfirmedtxs'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/mempool.go?s=7185:7247#L274">NumUnconfirmedTxs</a></h2>
+<p>Get number of unconfirmed transactions.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/num_unconfirmed_txs'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">result</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">UnconfirmedTxs</span><span class="p">()</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"txs"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"n_txs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='status'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/status.go?s=1742:1785#L66">Status</a></h2>
+<p>Get Tendermint status including node info, pubkey, latest block
+hash, app hash, block height and time.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/status'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">result</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">Status</span><span class="p">()</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"node_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"562dd7f579f0ecee8c94a11a3c1e378c1876f433"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"listen_addr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192.168.1.2:26656"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test-chain-I6zScH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.19.0"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"channels"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4020212223303800"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"moniker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ethans-MacBook-Pro.local"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"other"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="s2">"amino_version=0.9.8"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"p2p_version=0.5.0"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"consensus_version=v1/0.2.2"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rpc_version=0.7.0/3"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"tx_index=on"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"rpc_addr=tcp://0.0.0.0:26657"</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"sync_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"latest_block_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2D4D7055BE685E3CB2410603C92AD37AE557AC59"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"latest_app_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"latest_block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">231</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"latest_block_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-27T23:18:08.459766485-04:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"catching_up"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"validator_info"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5875562FF0FFDECC895C20E32FC14988952E99E7"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pub_key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tendermint/PubKeyEd25519"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PpDJRUrLG2RgFqYYjawfn/AcAgacSXpLFrmfYYQnuzE="</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"voting_power"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='subscribe'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/events.go?s=2799:2889#L87">Subscribe</a></h2>
+<p>Subscribe for events via WebSocket.</p>
+
+<p>To tell which events you want, you need to provide a query. query is a
+string, which has a form: &quot;condition AND condition ...&quot; (no OR at the
+moment). condition has a form: &quot;key operation operand&quot;. key is a string with
+a restricted set of possible symbols ( \t\n\r\()&quot;&#39;=&gt;&lt; are not allowed).
+operation can be &quot;=&quot;, &quot;&lt;&quot;, &quot;&lt;=&quot;, &quot;&gt;&quot;, &quot;&gt;=&quot;, &quot;CONTAINS&quot;. operand can be a
+string (escaped with single quotes), number, date or time.</p>
+
+<p>Examples:</p>
+
+<p>tm.event = &#39;NewBlock&#39;                               # new blocks
+    tm.event = &#39;CompleteProposal&#39;               # node got a complete proposal
+    tm.event = &#39;Tx&#39; AND tx.hash = &#39;XYZ&#39; # single transaction
+    tm.event = &#39;Tx&#39; AND tx.height = 5       # all txs of the fifth block
+    tx.height = 5                                               # all txs of the fifth block</p>
+
+<p>Tendermint provides a few predefined keys: tm.event, tx.hash and tx.height.
+Note for transactions, you can define additional keys by providing tags with
+DeliverTx response.</p>
+
+<p>DeliverTx{
+            Tags: []*KVPair{
+                &quot;agent.name&quot;: &quot;K&quot;,
+            }
+      }</p>
+
+<p>tm.event = &#39;Tx&#39; AND agent.name = &#39;K&#39;
+        tm.event = &#39;Tx&#39; AND account.created_at &gt;= TIME 2013-05-03T14:45:00Z
+        tm.event = &#39;Tx&#39; AND contract.sign_date = DATE 2017-01-01
+        tm.event = &#39;Tx&#39; AND account.owner CONTAINS &#39;Igor&#39;</p>
+
+<p>See list of all possible events here
+<a href="https://godoc.org/github.com/tendermint/tendermint/types#pkg-constants">https://godoc.org/github.com/tendermint/tendermint/types#pkg-constants</a></p>
+
+<p>For complete query syntax, check out
+<a href="https://godoc.org/github.com/tendermint/tendermint/libs/pubsub/query">https://godoc.org/github.com/tendermint/tendermint/libs/pubsub/query</a>.</p>
+<pre class="highlight go tab-go"><code><span class="k">import</span><span class="x"> </span><span class="s">"github.com/tendermint/tendermint/libs/pubsub/query"</span><span class="x">
+</span><span class="k">import</span><span class="x"> </span><span class="s">"github.com/tendermint/tendermint/types"</span><span class="x">
+
+</span><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">ctx</span><span class="p">,</span><span class="x"> </span><span class="n">cancel</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">context</span><span class="o">.</span><span class="n">WithTimeout</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">Background</span><span class="p">(),</span><span class="x"> </span><span class="n">timeout</span><span class="p">)</span><span class="x">
+</span><span class="k">defer</span><span class="x"> </span><span class="n">cancel</span><span class="p">()</span><span class="x">
+</span><span class="n">query</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">query</span><span class="o">.</span><span class="n">MustParse</span><span class="p">(</span><span class="s">"tm.event = 'Tx' AND tx.height = 3"</span><span class="p">)</span><span class="x">
+</span><span class="n">txs</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="nb">make</span><span class="p">(</span><span class="k">chan</span><span class="x"> </span><span class="k">interface</span><span class="p">{})</span><span class="x">
+</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">Subscribe</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span><span class="x"> </span><span class="s">"test-client"</span><span class="p">,</span><span class="x"> </span><span class="n">query</span><span class="p">,</span><span class="x"> </span><span class="n">txs</span><span class="p">)</span><span class="x">
+
+</span><span class="k">go</span><span class="x"> </span><span class="k">func</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
+
+
+      </span><span class="k">for</span><span class="x"> </span><span class="n">e</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">range</span><span class="x"> </span><span class="n">txs</span><span class="x"> </span><span class="p">{</span><span class="x">
+        </span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"got "</span><span class="p">,</span><span class="x"> </span><span class="n">e</span><span class="o">.</span><span class="p">(</span><span class="n">types</span><span class="o">.</span><span class="n">EventDataTx</span><span class="p">))</span><span class="x">
+         </span><span class="p">}</span><span class="x">
+
+</span><span class="p">}()</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>query</td>
+<td>string</td>
+<td>&quot;&quot;</td>
+<td>true</td>
+<td>Query</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">WebSocket only</aside>
+<h2 id='tx'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/tx.go?s=2113:2171#L74">Tx</a></h2>
+<p>Tx allows you to query the transaction results. <code>nil</code> could mean the
+transaction is in the mempool, invalidated, or was not sent in the first
+place.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"localhost:26657/tx?hash=0x2B8EC32BA2579B3B8606E42C06DE2F7AFA2556EF"</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">tx</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">Tx</span><span class="p">([]</span><span class="kt">byte</span><span class="p">(</span><span class="s">"2B8EC32BA2579B3B8606E42C06DE2F7AFA2556EF"</span><span class="p">),</span><span class="x"> </span><span class="no">true</span><span class="p">)</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"proof"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"Proof"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"aunts"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"Data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YWJjZA=="</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"RootHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2B8EC32BA2579B3B8606E42C06DE2F7AFA2556EF"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"Index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"tx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YWJjZA=="</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"tx_result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"log"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">52</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2B8EC32BA2579B3B8606E42C06DE2F7AFA2556EF"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Returns a transaction matching the given transaction hash.</p>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>hash</td>
+<td>[]byte</td>
+<td>nil</td>
+<td>true</td>
+<td>The transaction hash</td>
+</tr>
+<tr>
+<td>prove</td>
+<td>bool</td>
+<td>false</td>
+<td>false</td>
+<td>Include a proof of the transaction inclusion in the block</td>
+</tr>
+</tbody></table>
+<h3 id='returns'>Returns</h3>
+<ul>
+<li><code>proof</code>: the <code>types.TxProof</code> object</li>
+<li><code>tx</code>: <code>[]byte</code> - the transaction</li>
+<li><code>tx_result</code>: the <code>abci.Result</code> object</li>
+<li><code>index</code>: <code>int</code> - index of the transaction</li>
+<li><code>height</code>: <code>int</code> - height of the block where this transaction was in</li>
+<li><code>hash</code>: <code>[]byte</code> - hash of the transaction</li>
+</ul>
+<h2 id='txsearch'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/tx.go?s=5167:5257#L175">TxSearch</a></h2>
+<p>TxSearch allows you to query for multiple transactions results. It returns a
+list of transactions (maximum ?per_page entries) and the total count.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s2">"localhost:26657/tx_search?query=</span><span class="se">\"</span><span class="s2">account.owner='Ivan'</span><span class="se">\"</span><span class="s2">&amp;prove=true"</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">q</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">tmquery</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="s">"account.owner='Ivan'"</span><span class="p">)</span><span class="x">
+</span><span class="n">tx</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">TxSearch</span><span class="p">(</span><span class="n">q</span><span class="p">,</span><span class="x"> </span><span class="no">true</span><span class="p">)</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+      </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+           </span><span class="s2">"txs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"proof"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"Proof"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"aunts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                  </span><span class="s2">"J3LHbizt806uKnABNLwG4l7gXCA="</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"iblMO/M1TnNtlAefJyNCeVhjAb0="</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"iVk3ryurVaEEhdeS0ohAJZ3wtB8="</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"5hqMkTeGqpct51ohX0lZLIdsn7Q="</span><span class="p">,</span><span class="w">
+                  </span><span class="s2">"afhsNxFnLlZgFDoyPpdQSe0bR8g="</span><span class="w">
+                </span><span class="p">]</span><span class="w">
+              </span><span class="p">},</span><span class="w">
+              </span><span class="s2">"Data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mvZHHa7HhZ4aRT0xMDA="</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"RootHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"F6541223AA46E428CB1070E9840D2C3DF3B6D776"</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"Total"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+              </span><span class="s2">"Index"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="s2">"tx"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mvZHHa7HhZ4aRT0xMDA="</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"tx_result"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+            </span><span class="s2">"index"</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2B8EC32BA2579B3B8606E42C06DE2F7AFA2556EF"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"total_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>query</td>
+<td>string</td>
+<td>&quot;&quot;</td>
+<td>true</td>
+<td>Query</td>
+</tr>
+<tr>
+<td>prove</td>
+<td>bool</td>
+<td>false</td>
+<td>false</td>
+<td>Include proofs of the transactions inclusion in the block</td>
+</tr>
+<tr>
+<td>page</td>
+<td>int</td>
+<td>1</td>
+<td>false</td>
+<td>Page number (1-based)</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>int</td>
+<td>30</td>
+<td>false</td>
+<td>Number of entries per page (max: 100)</td>
+</tr>
+</tbody></table>
+<h3 id='returns-2'>Returns</h3>
+<ul>
+<li><code>proof</code>: the <code>types.TxProof</code> object</li>
+<li><code>tx</code>: <code>[]byte</code> - the transaction</li>
+<li><code>tx_result</code>: the <code>abci.Result</code> object</li>
+<li><code>index</code>: <code>int</code> - index of the transaction</li>
+<li><code>height</code>: <code>int</code> - height of the block where this transaction was in</li>
+<li><code>hash</code>: <code>[]byte</code> - hash of the transaction</li>
+</ul>
+<h2 id='unconfirmedtxs'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/mempool.go?s=6517:6585#L242">UnconfirmedTxs</a></h2>
+<p>Get unconfirmed transactions (maximum ?limit entries) including their number.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/unconfirmed_txs'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">result</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">UnconfirmedTxs</span><span class="p">()</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"txs"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="s2">"n_txs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">###</span><span class="w"> </span><span class="err">Query</span><span class="w"> </span><span class="err">Parameters</span><span class="w">
+
+</span><span class="err">|</span><span class="w"> </span><span class="err">Parameter</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Type</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Default</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Required</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">Description</span><span class="w">                          </span><span class="err">|</span><span class="w">
+</span><span class="err">|-----------+------+---------+----------+--------------------------------------|</span><span class="w">
+</span><span class="err">|</span><span class="w"> </span><span class="err">limit</span><span class="w">     </span><span class="err">|</span><span class="w"> </span><span class="err">int</span><span class="w">  </span><span class="err">|</span><span class="w"> </span><span class="mi">30</span><span class="w">      </span><span class="err">|</span><span class="w"> </span><span class="kc">false</span><span class="w">    </span><span class="err">|</span><span class="w"> </span><span class="err">Maximum</span><span class="w"> </span><span class="err">number</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">entries</span><span class="w"> </span><span class="err">(max</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="err">)</span><span class="w"> </span><span class="err">|</span><span class="w">
+</span></code></pre><h2 id='unsafedialpeers'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/net.go?s=1782:1868#L75">UnsafeDialPeers</a></h2><h2 id='unsafedialseeds'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/net.go?s=1279:1348#L62">UnsafeDialSeeds</a></h2><h2 id='unsubscribe'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/events.go?s=4191:4285#L139">Unsubscribe</a></h2>
+<p>Unsubscribe from events via WebSocket.</p>
+<pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">Unsubscribe</span><span class="p">(</span><span class="s">"test-client"</span><span class="p">,</span><span class="x"> </span><span class="n">query</span><span class="p">)</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='query-parameters-8'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Default</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>query</td>
+<td>string</td>
+<td>&quot;&quot;</td>
+<td>true</td>
+<td>Query</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">WebSocket only</aside>
+<h2 id='unsubscribeall'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/events.go?s=5037:5120#L172">UnsubscribeAll</a></h2>
+<p>Unsubscribe from all events via WebSocket.</p>
+<pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">UnsubscribeAll</span><span class="p">(</span><span class="s">"test-client"</span><span class="p">)</span><span class="x">
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<aside class="notice">WebSocket only</aside>
+<h2 id='validators'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/consensus.go?s=1045:1112#L46">Validators</a></h2>
+<p>Get the validator set at the given block height.
+If no height is provided, it will fetch the current validator set.</p>
+<pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/validators'</span>
+</code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
+</span><span class="n">state</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">Validators</span><span class="p">()</span><span class="x">
+</span></code></pre>
+<p>The above command returns JSON structured like this:</p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+
+
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"validators"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"accum"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"voting_power"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"pub_key"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68DFDA7E50F82946E7E8546BED37944A422CD1B831E70DF66BA3B8430593944D"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ed25519"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E89A51D60F68385E09E716D353373B11F8FACD62"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"block_height"</span><span class="p">:</span><span class="w"> </span><span class="mi">5241</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jsonrpc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="w">
+
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<hr>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="go">go</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

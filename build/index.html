@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;go&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;go&quot;,&quot;yaml&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -213,6 +213,7 @@
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
               <a href="#" data-language-name="go">go</a>
+              <a href="#" data-language-name="yaml">yaml</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -249,7 +250,7 @@
             <a href="#endpoints" class="toc-h1 toc-link" data-title="Endpoints">Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#abciinfo" class="toc-h2 toc-link" data-title="ABCIInfo"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/abci.go?s=2532:2579#L95">ABCIInfo</a></a>
+                    <a href="#abciinfo" class="toc-h2 toc-link" data-title="ABCIInfo"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/abci.go?s=2779:2826#L105">ABCIInfo</a></a>
                   </li>
                   <li>
                     <a href="#abciquery" class="toc-h2 toc-link" data-title="ABCIQuery"><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/abci.go?s=1609:1716#L52">ABCIQuery</a></a>
@@ -417,12 +418,21 @@ Endpoints that require arguments:
 /unsafe_start_cpu_profiler?filename=_
 /unsafe_write_heap_profile?filename=_
 /unsubscribe?event=_
-</code></pre><h1 id='endpoints'>Endpoints</h1><h2 id='abciinfo'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/abci.go?s=2532:2579#L95">ABCIInfo</a></h2>
+</code></pre><h1 id='endpoints'>Endpoints</h1><h2 id='abciinfo'><a href="https://github.com/tendermint/tendermint/tree/master/rpc/core/abci.go?s=2779:2826#L105">ABCIInfo</a></h2>
 <p>Get some info about the application.</p>
 <pre class="highlight shell tab-shell"><code>curl <span class="s1">'localhost:26657/abci_info'</span>
 </code></pre><pre class="highlight go tab-go"><code><span class="n">client</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">NewHTTP</span><span class="p">(</span><span class="s">"tcp://0.0.0.0:26657"</span><span class="p">,</span><span class="x"> </span><span class="s">"/websocket"</span><span class="p">)</span><span class="x">
 </span><span class="n">info</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">client</span><span class="o">.</span><span class="n">ABCIInfo</span><span class="p">()</span><span class="x">
-</span></code></pre>
+</span></code></pre><pre class="highlight yaml tab-yaml"><code><span class="pi">-</span> <span class="na">test</span><span class="pi">:</span>
+
+
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Get</span><span class="nv"> </span><span class="s">some</span><span class="nv"> </span><span class="s">info</span><span class="nv"> </span><span class="s">about</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">application."</span>
+    <span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/abci_info"</span>
+    <span class="pi">-</span> <span class="na">method</span><span class="pi">:</span> <span class="s2">"</span><span class="s">POST"</span>
+    <span class="pi">-</span> <span class="na">validators</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">compare</span><span class="pi">:</span> <span class="pi">{</span><span class="nv">jmespath</span><span class="pi">:</span> <span class="s1">'</span><span class="s">result.jsonrpc'</span><span class="pi">,</span> <span class="nv">comparator</span><span class="pi">:</span> <span class="s1">'</span><span class="s">eq'</span><span class="pi">,</span> <span class="nv">expected</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2.0'</span><span class="pi">}</span>
+
+</code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
@@ -1573,6 +1583,7 @@ If no height is provided, it will fetch the current validator set.</p>
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
                 <a href="#" data-language-name="go">go</a>
+                <a href="#" data-language-name="yaml">yaml</a>
           </div>
       </div>
     </div>
